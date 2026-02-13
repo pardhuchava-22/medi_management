@@ -1,0 +1,82 @@
+.resources-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-section {
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-backdrop);
+    border: var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    min-height: 400px;
+    /* Ensure chart has space */
+}
+
+/* Side Panel reused from Dashboard but applied here specifically if needed */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-backdrop);
+    border: var(--glass-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.staff-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.staff-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.staff-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.staff-count {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Dark track */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
