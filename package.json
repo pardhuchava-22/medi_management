@@ -13,6 +13,7 @@
         "@fontsource/inter": "^5.0.0",
         "clsx": "^2.1.0",
         "cors": "^2.8.6",
+        "dotenv": "^18.0.10",
         "express": "^5.2.1",
         "leaflet": "^1.9.4",
         "lucide-react": "^0.344.0",

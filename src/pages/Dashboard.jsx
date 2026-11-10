@@ -92,7 +92,8 @@ const Dashboard = () => {
 
   // Weather
   const fetchWeather = (lat, lng) => {
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`)
+    const weatherBaseUrl = import.meta.env.VITE_WEATHER_API_URL || 'https://api.open-meteo.com/v1/forecast';
+    fetch(`${weatherBaseUrl}?latitude=${lat}&longitude=${lng}&current_weather=true`)
       .then(res => res.json())
       .then(data => setWeather(data.current_weather))
       .catch(() => setWeather({ temperature: 32, weathercode: 1 }));
