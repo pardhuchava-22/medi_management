@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 
 import PredictiveAnalytics from './pages/PredictiveAnalytics';
+import NafldDiagnosis from './pages/NafldDiagnosis';
 import Resources from './pages/Resources';
 import Alerts from './pages/Alerts';
 import Insights from './pages/Insights';
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Dashboard />} />
+                    <Route path="nafld" element={<NafldDiagnosis />} />
                     <Route path="predictive" element={<PredictiveAnalytics />} />
                     <Route path="resources" element={<Resources />} />
                     <Route path="alerts" element={<Alerts />} />

@@ -2,41 +2,59 @@
     display: flex;
     min-height: 100vh;
     background-color: var(--bg-dark);
-    /* Fixed variable name */
     position: relative;
+    overflow-x: hidden;
 }
 
-.main-content {
+.main-wrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-width: 0;
-    /* Prevents flex items from overflowing */
-    margin-left: 0;
-    /* Sidebar handles its own width/positioning */
+    transition: var(--transition-normal);
+    position: relative;
+    z-index: 1;
 }
 
-/* Desktop: Sidebar is static, so main content needs margin if sidebar is fixed */
+.main-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 40;
+    transition: opacity var(--transition-normal);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.main-overlay.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.page-container {
+    padding: 1.5rem 2rem;
+    flex: 1;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Desktop: Sidebar is fixed/sticky */
 @media (min-width: 769px) {
-    .main-content {
-        /* If sidebar is sticky/fixed, we might not need margin if it's in flow. 
-       Based on Sidebar.css, it's sticky. So it takes space in flow. */
+    .main-wrapper {
+        margin-left: 260px; /* Width of sidebar */
         width: calc(100% - 260px);
     }
 }
 
-.page-container {
-    padding: 2rem;
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .main-content {
+    .main-wrapper {
         width: 100%;
-        margin-left: 0;
+        margin-left: 0 !important;
     }
 
     .page-container {

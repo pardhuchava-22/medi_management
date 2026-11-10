@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     LayoutDashboard,
+    HeartPulse,
     Activity,
     BedDouble,
     AlertTriangle,
@@ -16,6 +17,7 @@ import './Sidebar.css';
 const Sidebar = ({ isOpen, onClose }) => {
     const navItems = [
         { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+        { to: '/nafld', icon: HeartPulse, label: 'NAFLD AI Diagnostics' },
         { to: '/predictive', icon: Activity, label: 'Predictive Analytics' },
         { to: '/resources', icon: BedDouble, label: 'Resources' },
         { to: '/alerts', icon: AlertTriangle, label: 'Alerts Center' },

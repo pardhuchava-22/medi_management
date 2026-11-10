@@ -3,22 +3,24 @@ import './StatCard.css';
 
 const StatCard = ({ title, value, change, trend, icon: Icon, color }) => {
     return (
-        <div className={`stat-card glass-panel ${color}`}>
+        <div className={`stat-card glass-panel ${color} hover-scale`}>
+            <div className="stat-glow"></div>
             <div className="stat-header">
-                <div className={`stat-icon-wrapper ${color}`}>
-                    <Icon size={20} />
+                <div className="stat-icon-container">
+                    <Icon size={24} className="stat-icon" />
                 </div>
                 {change && (
-                    <span className={`stat-change ${trend}`}>
+                    <div className={`stat-badge ${trend}`}>
                         {change}
-                    </span>
+                    </div>
                 )}
             </div>
             <div className="stat-content">
-                <span className="stat-value">{value}</span>
+                <div className="stat-value-row">
+                    <span className="stat-value">{value}</span>
+                </div>
                 <span className="stat-title">{title}</span>
             </div>
-            <div className={`stat-glow ${color}`}></div>
         </div>
     );
 };

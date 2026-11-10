@@ -1,0 +1,10 @@
+{
+    "hospitalMetrics": {
+        "currentOccupancy": 88,
+        "icuAvailability": 3,
+        "patientInflow": 142,
+        "staffOnDuty": 45,
+        "currentShift": "Morning",
+        "emergencyAlerts": 3
+    }
+}

@@ -1,185 +1,544 @@
-.dashboard-container {
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Header Section Refactor */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 16px var(--primary-glow);
+}
+
+.brand-text h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.brand-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.header-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.location-pill {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-full);
+}
+
+.loc-icon { color: var(--primary); }
+
+.loc-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.loc-update-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.loc-update-btn:hover { 
+  background: var(--primary);
+  transform: rotate(180deg);
+}
+
+.region-selector {
+  display: flex;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  gap: 4px;
+}
+
+.region-btn {
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.region-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.03); }
+
+.region-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+/* Stats Container */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Main Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.grid-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.grid-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 1rem;
+  /* Allowing natural height to prevent visibility issues in sticky container */
+}
+
+/* Custom scrollbar for sticky side col */
+.grid-side-col::-webkit-scrollbar {
+  width: 4px;
+}
+
+.grid-side-col::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.grid-side-col::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.grid-side-col:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Map Wrapper */
+.map-wrapper {
+  height: 520px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Vacancy Grid Wrapper */
+.vacancy-grid-wrapper {
+  width: 100%;
+}
+
+/* Insights Panel */
+.insights-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.insights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.insights-header h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.live-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--success);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.forecast-chart-area {
+  height: 220px;
+  margin: 0.5rem 0;
+}
+
+/* Disease Section */
+.d-area-header h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.d-area-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.disease-list-static {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.disease-row-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+}
+
+.disease-row-premium:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-highlight);
+  transform: translateX(6px);
+}
+
+.d-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.d-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.d-type {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.d-trend-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.d-trend-badge.up {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--danger);
+}
+
+.d-trend-badge.down {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+/* Weather Impact */
+.weather-impact-alert {
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border);
+}
+
+.weather-impact-alert.warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.02) 100%);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.weather-impact-alert.critical {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.1) 0%, rgba(244, 63, 94, 0.02) 100%);
+  border-color: rgba(244, 63, 94, 0.2);
+}
+
+.weather-impact-alert.positive {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border-color: rgba(16, 185, 129, 0.15);
+}
+
+.w-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.weather-impact-alert p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin { animation: spin 2s linear infinite; }
+
+/* Responsive Refactoring */
+@media (max-width: 1440px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 380px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-side-col {
+    position: static;
+    display: flex; /* Back to flex column */
+    flex-direction: column;
+    max-height: none;
+    overflow-y: visible;
+    gap: 1.5rem;
+  }
+}
+
+/* Special fix for the side components on medium screens */
+@media (max-width: 1100px) {
+  .grid-side-col {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+  }
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-}
-
-.dashboard-main-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-}
-
-@media (max-width: 1024px) {
-    .dashboard-main-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem;
-}
-
-.section-header h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    /* Neon glow for headers */
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    border-radius: 8px;
-    backdrop-filter: blur(4px);
-    transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.chart-section.main-chart {
-    padding: 1.5rem;
-    min-height: 400px;
-    background: var(--bg-card);
-    /* Ensure glass background */
-    backdrop-filter: var(--glass-backdrop);
-    border: var(--glass-border);
-    border-radius: var(--radius);
-}
-
-.side-panel {
-    display: flex;
+@media (max-width: 768px) {
+  .dashboard-header {
     flex-direction: column;
+    align-items: stretch;
     gap: 1.5rem;
-}
-
-/* Disease List in Glass */
-.disease-list {
-    background: var(--bg-card);
-    backdrop-filter: var(--glass-backdrop);
-    border: var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    display: flex;
+  }
+  
+  .header-controls {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .region-selector {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .region-selector::-webkit-scrollbar { display: none; }
+  
+  .stats-container {
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
 }
 
-.disease-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+@media (max-width: 480px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .brand-text h1 {
+    font-size: 1.4rem;
+  }
 }
 
-.disease-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+/* NAFLD Dashboard Featured Banner */
+.nafld-dashboard-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.05);
 }
 
-.rank {
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
+.nafld-dashboard-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.08));
+  pointer-events: none;
+}
+
+.nafld-banner-left {
+  flex: 1;
+}
+
+.nafld-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.nafld-banner-left h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.nafld-banner-left p {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  max-width: 820px;
+}
+
+.nafld-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nafld-launch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.nafld-launch-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.nafld-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399 !important;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.72rem 1.15rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.nafld-download-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(16, 185, 129, 0.3);
+  color: #ffffff !important;
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+}
+
+@media (max-width: 900px) {
+  .nafld-dashboard-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .nafld-banner-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .nafld-launch-btn,
+  .nafld-download-btn {
+    width: 100%;
     justify-content: center;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.disease-name {
-    color: var(--text-primary);
-    font-weight: 500;
-    display: block;
-    /* Ensure it takes its own line */
-    font-size: 0.95rem;
-}
-
-.disease-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.disease-type {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.disease-trend {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.disease-trend.up {
-    color: var(--success);
-}
-
-.disease-trend.down {
-    color: var(--success);
-    /* Trend down in disease is usually "good"? Or bad? Usually red if cases UP. Green if cases DOWN. Assuming Context: Disease Trends = Cases. Up = Bad (Red/Warning), Down = Good (Green). 
-    Wait, in the JSX:
-    trend="up" -> color="warning" or "danger".
-    In the side panel, it just says .up and .down.
-    Let's align with intuition: Trends of *disease* going UP is BAD.
-    */
-    color: var(--success);
-}
-
-/* Wait, I should stick to the design. In JSX line 70: className="disease-trend up"
-   Icon is ArrowUpRight.
-   Usually for disease, Up = Red.
-   Let's check the values. 15% Up.
-   I'll set Up = Warning/Primary, Down = Success.
-*/
-.disease-trend.up {
-    color: var(--warning);
-}
-
-.disease-trend.down {
-    color: var(--success);
-}
-
-.weather-alert {
-    background: linear-gradient(135deg, rgba(30, 64, 175, 0.4) 0%, rgba(30, 58, 138, 0.6) 100%);
-    border: 1px solid rgba(96, 165, 250, 0.3);
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.weather-header {
-    color: #93c5fd;
-    margin-bottom: 0.75rem;
-}
-
-.weather-alert p {
-    color: #bfdbfe;
+  }
 }

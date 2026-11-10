@@ -1,0 +1,418 @@
+.nearby-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Removed fixed height to allow natural expansion in flex sidebar */
+}
+
+.nearby-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nearby-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.nearby-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.nearby-icon {
+  color: var(--primary);
+}
+
+.nearby-title-row h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  flex: 1;
+}
+
+.nearby-count-badge {
+  background: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.nearby-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Scenario Tabs */
+.scenario-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+
+.scenario-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.scenario-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.scenario-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-highlight);
+}
+
+.scenario-tab.active {
+  background: rgba(var(--active-color-rgb, 59, 130, 246), 0.15);
+  border-color: var(--active-color);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(var(--active-color-rgb, 59, 130, 246), 0.1);
+}
+
+/* Hospital List */
+.nearby-list {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+  max-height: 550px;
+}
+
+/* Premium Card Refactor */
+.hospital-card-premium {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hospital-card-premium:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-highlight);
+  transform: translateX(4px);
+  box-shadow: -10px 0 30px rgba(59, 130, 246, 0.05);
+}
+
+.hospital-card-premium.selected {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.card-accent-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.occ-good .card-accent-line { background: var(--success); }
+.occ-moderate .card-accent-line { background: var(--warning); }
+.occ-critical .card-accent-line { background: var(--danger); }
+
+.h-card-main {
+  padding: 1.5rem;
+}
+
+.h-header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.25rem;
+}
+
+.h-rank-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+}
+
+.h-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.h-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.h-district-tag {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.h-type-tag {
+  background: rgba(255,255,255,0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.h-rating-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(251, 191, 36, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  color: var(--warning);
+  font-size: 0.8rem;
+  font-weight: 800;
+  border: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+/* Stats Row */
+.h-stats-premium-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.h-sp-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.hospital-card-premium:hover .h-sp-item {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.h-sp-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.h-sp-val {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.h-sp-lab {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.h-occupancy-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.h-meter-bg {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.h-occ-text { font-size: 0.8rem; font-weight: 800; }
+
+/* Expanded Content */
+.h-card-expanded {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid var(--border);
+}
+
+.h-specialties-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.h-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.h-tag {
+  font-size: 0.75rem;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  color: var(--primary-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+}
+
+.h-extra-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.h-ex-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.h-ex-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.h-ex-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.h-ex-fill {
+  height: 100%;
+  background: var(--warning);
+  border-radius: 3px;
+}
+
+.h-ex-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.h-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.h-btn-premium {
+  flex: 1;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.h-btn-premium.directions {
+  background: var(--primary);
+  border-color: var(--primary-light);
+}
+
+.h-btn-premium:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.1);
+}
+
+.h-btn-premium.directions:hover {
+  box-shadow: 0 10px 20px var(--primary-glow);
+}
+
+.h-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.h-btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.btn-main {
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.btn-sub {
+  font-size: 0.6rem;
+  opacity: 0.7;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.h-expand-chevron {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--text-muted);
+  transition: var(--transition-normal);
+}
+
+.h-expand-chevron.active {
+  transform: rotate(90deg);
+  color: var(--primary);
+}

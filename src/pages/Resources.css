@@ -1,82 +1,287 @@
-.resources-container {
+.resources-page {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-.resources-grid {
+.resources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -1rem;
+}
+
+.resources-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0 0 0.5rem 0;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes pulse-dot {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.stats-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-    .resources-grid {
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.main-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-filter-section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color: #3b82f6;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    color: #f8fafc;
+    font-size: 1rem;
+    outline: none;
+}
+
+.scenario-toggles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.scenario-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scenario-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.scenario-btn.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.hospitals-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.hospitals-list-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.result-count {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.hospital-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.resource-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.panel-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.distribution-info {
+    padding: 1rem 1.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.optimization-insights {
+    display: flex;
+    flex-direction: column;
+}
+
+.insight-item {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.insight-item:last-child {
+    border-bottom: none;
+}
+
+.insight-item h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0 0 0.4rem 0;
+}
+
+.insight-item p {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.resources-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 1.25rem;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1200px) {
+    .content-layout {
         grid-template-columns: 1fr;
+    }
+    
+    .resource-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.chart-section {
-    background: var(--bg-card);
-    backdrop-filter: var(--glass-backdrop);
-    border: var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    min-height: 400px;
-    /* Ensure chart has space */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Side Panel reused from Dashboard but applied here specifically if needed */
-.side-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: var(--bg-card);
-    backdrop-filter: var(--glass-backdrop);
-    border: var(--glass-border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
+@media (max-width: 768px) {
+    .resources-page {
+        padding: 1.5rem;
+    }
+    
+    .resource-sidebar {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
 }
 
-.staff-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.staff-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.staff-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.staff-count {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
-}
-
-.progress-bar {
-    height: 8px;
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Dark track */
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hospital-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .scenario-btn {
+        flex: 1;
+        justify-content: center;
+        min-width: 140px;
+    }
 }
